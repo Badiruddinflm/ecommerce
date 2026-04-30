@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CRAZY STORE ⚡</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Glitch Title */
+.glitch {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    position: relative;
+    animation: flicker 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: 'CRAZY STORE';
+    position: absolute;
+    left: 0;
+}
+
+.glitch::before {
+    color: red;
+    animation: glitchTop 1s infinite;
+}
+
+.glitch::after {
+    color: cyan;
+    animation: glitchBottom 1s infinite;
+}
+
+@keyframes glitchTop {
+    0% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    100% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitchBottom {
+    0% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    100% { transform: translate(-2px, 2px); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Product Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.card {
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transform: rotate(-2deg);
+    transition: 0.3s;
+    box-shadow: 0 0 20px neon;
+}
+
+.card:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.price {
+    font-size: 24px;
+    color: yellow;
+}
+
+/* Button chaos */
+button {
+    background: black;
+    color: white;
+    border: 2px solid cyan;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: cyan;
+    color: black;
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Floating emojis */
+.emoji {
+    position: fixed;
+    font-size: 30px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="glitch">CRAZY STORE</h1>
+
+<div class="grid">
+
+    <div class="card">
+        <img src="https://picsum.photos/300?random=1">
+        <h2>Invisible Shoes 👻</h2>
+        <p>Walk barefoot but make it fashion.</p>
+        <div class="price">₹9999</div>
+        <button onclick="buy()">BUY NOW</button>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/300?random=2">
+        <h2>Protein Air 💨</h2>
+        <p>0 calories. 0 protein. 100% confidence.</p>
+        <div class="price">₹499</div>
+        <button onclick="buy()">BUY NOW</button>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/300?random=3">
+        <h2>Time Machine Watch ⏳</h2>
+        <p>Still late? Not our fault.</p>
+        <div class="price">₹99999</div>
+        <button onclick="buy()">BUY NOW</button>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/300?random=4">
+        <h2>Gym Motivation Pills 💊</h2>
+        <p>Side effect: still lazy.</p>
+        <div class="price">₹199</div>
+        <button onclick="buy()">BUY NOW</button>
+    </div>
+
+</div>
+
+<script>
+function buy() {
+    alert("🔥 ORDER PLACED... OR IS IT? 🔥");
+}
+
+/* Crazy floating emojis */
+setInterval(() => {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji");
+    emoji.innerText = ["🔥","💸","🛒","⚡","😵"][Math.floor(Math.random()*5)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(emoji);
+
+    setTimeout(() => emoji.remove(), 5000);
+}, 500);
+</script>
+
+</body>
+</html>
